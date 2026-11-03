@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BharatQuant AI — Executive Project Summary</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      color: #0f172a;
+      border-bottom: 2px solid #00e5ff;
+      padding-bottom: 8px;
+    }
+    h2 {
+      color: #0f172a;
+      margin-top: 32px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+    h3 {
+      color: #334155;
+    }
+    blockquote {
+      background: #f8fafc;
+      border-left: 4px solid #00e5ff;
+      margin: 16px 0;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #334155;
+      font-style: italic;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .badge {
+      display: inline-block;
+      background: #0f172a;
+      color: #38bdf8;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .links a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    @media print {
+      body { margin: 20px; }
+      blockquote { border-left-color: #333; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 BharatQuant AI — Executive Project Summary & Pitch Guide</h1>
+  <p><em>Institutional-Grade Stock Market Intelligence, Quantitative Strategy Backtesting & Paper Trading Platform</em></p>
+
+  <h2>⚡ 1. The 30-Second Elevator Pitch</h2>
+  <blockquote>
+    "BharatQuant AI is an institutional-grade stock market intelligence and paper trading web platform built specifically for the Indian markets (NSE & BSE). It combines real-time TradingView-style charts, mathematical technical analysis, an event-driven strategy backtester that accounts for Indian taxes like STT and brokerage, and a 'zero-hallucination' AI stock research analyst powered by Claude. The entire platform is deployed live in production using Next.js on Vercel and Python FastAPI on Render."
+  </blockquote>
+
+  <h2>🎙️ 2. The 2-Minute Detailed Pitch</h2>
+  <h3>The Problem</h3>
+  <p>Most retail stock market tools suffer from two major flaws:</p>
+  <ul>
+    <li><strong>AI Hallucinations:</strong> Generic LLMs frequently fabricate stock prices, earnings figures, and make unsubstantiated return predictions.</li>
+    <li><strong>Backtesting Over-Optimism:</strong> Most amateur backtesters ignore real-world market friction like Indian Securities Transaction Tax (STT), exchange turnover charges, execution slippage, and brokerage fees, producing unrealistic profit numbers.</li>
+  </ul>
+
+  <h3>The Solution: Mathematics First, AI Second</h3>
+  <p>BharatQuant AI resolves this by enforcing a strict separation of concerns:</p>
+  <ul>
+    <li>A <strong>high-performance Python backend</strong> calculates real mathematical indicators (Wilder's RSI, EMA ribbons, MACD, Bollinger Bands, ATR, and Floor Pivot points).</li>
+    <li>An <strong>evidence-grounded AI model (Claude 3.5 Sonnet)</strong> receives these verified numbers to synthesize natural language equity research briefs with transparent bullish catalysts and risk bounds—never inventing numbers.</li>
+  </ul>
+
+  <h2>🧭 3. The 7 Core Modules</h2>
+  <ol>
+    <li><strong>Market Intelligence & Ticker Tape:</strong> Real-time and simulated tracking of NIFTY 50, SENSEX, BANK NIFTY, NIFTY IT, and sector indices.</li>
+    <li><strong>60fps Candlestick Charts:</strong> TradingView Lightweight Charts™ rendering canvas Japanese candlestick series with volume histograms.</li>
+    <li><strong>AI Stock Research Analyst:</strong> Synthesizes evidence-grounded research reports evaluating technical indicators, catalysts, and volatility bounds without hallucinations.</li>
+    <li><strong>Deterministic Trading Signal Engine:</strong> Rule-based algorithmic signals (BUY, SELL, HOLD) scored on trend, momentum, and volatility with ATR invalidation stop-loss levels.</li>
+    <li><strong>Event-Driven Strategy Lab:</strong> Historical backtesting engine simulating quantitative strategies with zero look-ahead bias, modeling Indian STT (0.1%), turnover charges, and flat ₹20 brokerage.</li>
+    <li><strong>Virtual Paper Trading Environment:</strong> Sandbox with an initial virtual capital of ₹1,00,000 INR, guarded by pre-trade cash validation, anti-shorting delivery checks, and an immutable double-entry audit ledger.</li>
+    <li><strong>Portfolio Risk Radar:</strong> Calculates concentration risk via the Herfindahl-Hirschman Index (HHI), estimates 1-Day 95% Value at Risk (VaR), and simulates macroeconomic stress tests (e.g. NIFTY -5% corrections).</li>
+  </ol>
+
+  <h2>🛠️ 4. Full Technology Stack</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Technologies</th>
+        <th>Key Responsibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Frontend</strong></td>
+        <td>Next.js 15, React 19, TypeScript, Tailwind CSS</td>
+        <td>Server & Client hybrid rendering, dark financial terminal UI</td>
+      </tr>
+      <tr>
+        <td><strong>Charts</strong></td>
+        <td>TradingView Lightweight Charts™, Recharts</td>
+        <td>Canvas 60fps candlestick charts, equity curves, sector pies</td>
+      </tr>
+      <tr>
+        <td><strong>Backend API</strong></td>
+        <td>Python 3, FastAPI, Uvicorn, Pydantic v2</td>
+        <td>High-speed REST API with automatic OpenAPI Swagger documentation</td>
+      </tr>
+      <tr>
+        <td><strong>Quant Analytics</strong></td>
+        <td>NumPy, Pandas, SciPy</td>
+        <td>Vectorized indicator math, time-series operations, technical analysis</td>
+      </tr>
+      <tr>
+        <td><strong>Database & Security</strong></td>
+        <td>Supabase PostgreSQL 15+, Row-Level Security (RLS)</td>
+        <td>Relational integrity, double-entry ledger, user data isolation</td>
+      </tr>
+      <tr>
+        <td><strong>AI Orchestration</strong></td>
+        <td>Anthropic Claude 3.5 Sonnet / Multi-LLM Gateway</td>
+        <td>Evidence-grounded financial reasoning, conversational copilot</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Hosting & CI/CD</strong></td>
+        <td>Vercel (Frontend) + Render (Backend)</td>
+        <td>Edge CDN deployment with automated GitHub CI/CD webhooks</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>🌟 5. The "Smart Twist" (Why This Project Stands Out)</h2>
+  <blockquote>
+    "The most interesting technical decision was the <strong>Evidence-Grounded AI Pipeline</strong>. Rather than asking an LLM to predict stock prices directly, our FastAPI quantitative engine calculates all technical indicators deterministically using NumPy. We then feed these exact numbers into the LLM prompt with strict system constraints. This guarantees that the AI acts as an articulate financial translator grounded strictly in mathematical truth, completely eliminating hallucinations."
+  </blockquote>
+
+  <h2>🔗 6. Live Production Links</h2>
+  <div class="links">
+    <p>🌐 <strong>Live Web Application (Vercel):</strong> <a href="https://bharatquant-ai-trading.vercel.app" target="_blank">https://bharatquant-ai-trading.vercel.app</a></p>
+    <p>📑 <strong>Interactive Swagger API Docs (Render):</strong> <a href="https://bharatquant-ai-trading-backend.onrender.com/api/v1/docs" target="_blank">https://bharatquant-ai-trading-backend.onrender.com/api/v1/docs</a></p>
+    <p>💻 <strong>GitHub Repository:</strong> <a href="https://github.com/jagadeesh-1108/bharatquant-ai_Trading" target="_blank">https://github.com/jagadeesh-1108/bharatquant-ai_Trading</a></p>
+  </div>
+
+</body>
+</html>
