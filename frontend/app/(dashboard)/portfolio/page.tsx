@@ -24,6 +24,7 @@ import {
   YAxis
 } from "recharts";
 import { formatINR, formatPercent } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 const SECTOR_COLORS = ["#00e5ff", "#00c076", "#9d4edd", "#f5a623", "#ff3b53", "#3b82f6", "#ec4899"];
 
@@ -37,8 +38,8 @@ export default function PortfolioRiskPage() {
       try {
         setLoading(true);
         const [ovRes, riskRes] = await Promise.all([
-          fetch("http://127.0.0.1:8000/api/v1/portfolio/overview"),
-          fetch("http://127.0.0.1:8000/api/v1/portfolio/risk"),
+          fetch(`${API_BASE_URL}/portfolio/overview`),
+          fetch(`${API_BASE_URL}/portfolio/risk`),
         ]);
         if (ovRes.ok) setOverview(await ovRes.json());
         if (riskRes.ok) setRisk(await riskRes.json());

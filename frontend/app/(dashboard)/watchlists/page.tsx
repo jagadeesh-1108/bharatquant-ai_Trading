@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Eye, Bell, Plus, Trash2, AlertCircle, CheckCircle2, TrendingUp, TrendingDown } from "lucide-react";
 import { formatINR, formatPercent } from "@/lib/utils";
 import Link from "next/link";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function WatchlistsAndAlertsPage() {
   const [watchlists, setWatchlists] = useState<any[]>([]);
@@ -20,8 +21,8 @@ export default function WatchlistsAndAlertsPage() {
     try {
       setLoading(true);
       const [wlRes, altRes] = await Promise.all([
-        fetch("http://127.0.0.1:8000/api/v1/watchlists"),
-        fetch("http://127.0.0.1:8000/api/v1/alerts"),
+        fetch(`${API_BASE_URL}/watchlists`),
+        fetch(`${API_BASE_URL}/alerts`),
       ]);
       if (wlRes.ok) setWatchlists(await wlRes.json());
       if (altRes.ok) setAlerts(await altRes.json());
@@ -39,7 +40,7 @@ export default function WatchlistsAndAlertsPage() {
   const handleCreateAlert = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/alerts", {
+      const res = await fetch(`${API_BASE_URL}/alerts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -61,7 +62,7 @@ export default function WatchlistsAndAlertsPage() {
 
   const handleDeleteAlert = async (id: string) => {
     try {
-      await fetch(`http://127.0.0.1:8000/api/v1/alerts/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE_URL}/alerts/${id}`, { method: "DELETE" });
       loadData();
     } catch (err) {
       console.error(err);

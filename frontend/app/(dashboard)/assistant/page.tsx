@@ -11,6 +11,7 @@ import {
   BrainCircuit,
   CornerDownLeft
 } from "lucide-react";
+import { API_BASE_URL } from "@/lib/api";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -55,7 +56,7 @@ export default function AIAssistantPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/ai/chat", {
+      const res = await fetch(`${API_BASE_URL}/ai/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

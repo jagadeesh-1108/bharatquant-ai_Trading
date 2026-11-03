@@ -15,6 +15,7 @@ import {
   Activity
 } from "lucide-react";
 import { formatINR } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 function AIStockAnalystContent() {
   const searchParams = useSearchParams();
@@ -28,7 +29,7 @@ function AIStockAnalystContent() {
   const fetchAnalysis = async (sym: string) => {
     try {
       setLoading(true);
-      const res = await fetch("http://127.0.0.1:8000/api/v1/ai/analyze", {
+      const res = await fetch(`${API_BASE_URL}/ai/analyze`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ symbol: sym.toUpperCase(), exchange: "NSE" }),

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { formatINR } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function TradingSignalsPage() {
   const [signals, setSignals] = useState<any[]>([]);
@@ -24,7 +25,7 @@ export default function TradingSignalsPage() {
     async function loadSignals() {
       try {
         setLoading(true);
-        const res = await fetch("http://127.0.0.1:8000/api/v1/signals?limit=12");
+        const res = await fetch(`${API_BASE_URL}/signals?limit=12`);
         if (res.ok) setSignals(await res.json());
       } catch (err) {
         console.error("Failed to load trading signals:", err);

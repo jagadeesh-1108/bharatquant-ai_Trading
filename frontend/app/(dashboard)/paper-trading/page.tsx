@@ -14,6 +14,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import { formatINR, formatPercent } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function PaperTradingPage() {
   const [account, setAccount] = useState<any>(null);
@@ -36,10 +37,10 @@ export default function PaperTradingPage() {
     try {
       setLoading(true);
       const [accRes, holdRes, ordRes, txnRes] = await Promise.all([
-        fetch("http://127.0.0.1:8000/api/v1/paper/account"),
-        fetch("http://127.0.0.1:8000/api/v1/paper/holdings"),
-        fetch("http://127.0.0.1:8000/api/v1/paper/orders"),
-        fetch("http://127.0.0.1:8000/api/v1/paper/transactions"),
+        fetch(`${API_BASE_URL}/paper/account`),
+        fetch(`${API_BASE_URL}/paper/holdings`),
+        fetch(`${API_BASE_URL}/paper/orders`),
+        fetch(`${API_BASE_URL}/paper/transactions`),
       ]);
 
       if (accRes.ok) setAccount(await accRes.json());
@@ -64,7 +65,7 @@ export default function PaperTradingPage() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/paper/orders", {
+      const res = await fetch(`${API_BASE_URL}/paper/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -95,7 +96,7 @@ export default function PaperTradingPage() {
   const handleReset = async () => {
     if (confirm("Are you sure you want to reset your virtual trading account back to ₹1,00,000? All virtual holdings will be cleared.")) {
       try {
-        await fetch("http://127.0.0.1:8000/api/v1/paper/reset", { method: "POST" });
+        await fetch(`${API_BASE_URL}/paper/reset`, { method: "POST" });
         loadData();
       } catch (err) {
         console.error("Reset failed:", err);

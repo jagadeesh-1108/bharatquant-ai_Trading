@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { TrendingUp, TrendingDown, Search, ArrowUpRight, ArrowDownRight, Layers } from "lucide-react";
 import Link from "next/link";
 import { formatINR, formatPercent } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function MarketExplorerPage() {
   const [overview, setOverview] = useState<any>(null);
@@ -14,7 +15,7 @@ export default function MarketExplorerPage() {
     async function loadData() {
       try {
         setLoading(true);
-        const res = await fetch("http://127.0.0.1:8000/api/v1/market/overview");
+        const res = await fetch(`${API_BASE_URL}/market/overview`);
         if (res.ok) setOverview(await res.json());
       } catch (err) {
         console.error(err);

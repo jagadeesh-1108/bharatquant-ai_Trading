@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Search, Bell, ShieldCheck, Zap, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { API_BASE_URL } from "@/lib/api";
 
 interface HeaderProps {
   onSearchSelect?: (symbol: string) => void;
@@ -22,7 +23,7 @@ export default function Header({ onSearchSelect }: HeaderProps) {
 
     try {
       setIsSearching(true);
-      const res = await fetch(`http://127.0.0.1:8000/api/v1/market/stocks/search?query=${encodeURIComponent(query)}`);
+      const res = await fetch(`${API_BASE_URL}/market/stocks/search?query=${encodeURIComponent(query)}`);
       if (res.ok) {
         const data = await res.json();
         setSearchResults(data);

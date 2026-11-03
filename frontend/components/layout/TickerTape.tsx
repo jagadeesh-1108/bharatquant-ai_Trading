@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { formatINR, formatPercent } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function TickerTape() {
   const [indices, setIndices] = useState<any[]>([
@@ -17,7 +18,7 @@ export default function TickerTape() {
   useEffect(() => {
     async function fetchIndices() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/v1/market/indices");
+        const res = await fetch(`${API_BASE_URL}/market/indices`);
         if (res.ok) {
           const data = await res.json();
           if (data && data.length > 0) setIndices(data);

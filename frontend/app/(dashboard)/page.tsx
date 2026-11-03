@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { formatINR, formatPercent } from "@/lib/utils";
 import TradingViewChart from "@/components/charts/TradingViewChart";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function OverviewDashboard() {
   const [marketOverview, setMarketOverview] = useState<any>(null);
@@ -32,19 +33,19 @@ export default function OverviewDashboard() {
       try {
         setLoading(true);
         // 1. Fetch Market Overview
-        const ovRes = await fetch("http://127.0.0.1:8000/api/v1/market/overview");
+        const ovRes = await fetch(`${API_BASE_URL}/market/overview`);
         if (ovRes.ok) setMarketOverview(await ovRes.json());
 
         // 2. Fetch Trading Signals
-        const sigRes = await fetch("http://127.0.0.1:8000/api/v1/signals?limit=4");
+        const sigRes = await fetch(`${API_BASE_URL}/signals?limit=4`);
         if (sigRes.ok) setSignals(await sigRes.json());
 
         // 3. Fetch Paper Account Snapshot
-        const accRes = await fetch("http://127.0.0.1:8000/api/v1/paper/account");
+        const accRes = await fetch(`${API_BASE_URL}/paper/account`);
         if (accRes.ok) setPaperAccount(await accRes.json());
 
         // 4. Fetch Stock Candles for Chart
-        const chartRes = await fetch(`http://127.0.0.1:8000/api/v1/market/stocks/${selectedStock}/history?days=120`);
+        const chartRes = await fetch(`${API_BASE_URL}/market/stocks/${selectedStock}/history?days=120`);
         if (chartRes.ok) setCandles(await chartRes.json());
       } catch (err) {
         console.error("Dashboard data load error:", err);

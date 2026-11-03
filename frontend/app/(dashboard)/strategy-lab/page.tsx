@@ -24,6 +24,7 @@ import {
   Legend
 } from "recharts";
 import { formatINR } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function StrategyLabPage() {
   const [strategyId, setStrategyId] = useState<string>("MA_CROSSOVER");
@@ -44,7 +45,7 @@ export default function StrategyLabPage() {
     setError(null);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/backtests/run", {
+      const res = await fetch(`${API_BASE_URL}/backtests/run`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
